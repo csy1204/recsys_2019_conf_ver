@@ -5,6 +5,9 @@ import time
 import click
 import googleapiclient
 import googleapiclient.discovery
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
+
 from recsys.automation.utils import get_timestamp, str_to_hash
 
 

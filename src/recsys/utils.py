@@ -4,6 +4,9 @@ from contextlib import contextmanager
 
 import git
 import numpy as np
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
+
 from recsys.log_utils import get_logger
 
 logger = get_logger()

@@ -6,6 +6,9 @@ import h5sparse
 import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
+
 from recsys.transformers import (
     FeatureEng,
     FeaturesAtAbsoluteRank,
@@ -23,6 +26,7 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import make_pipeline
+from scipy.sparse import csr_matrix
 
 numerical_features_info = [
     ("avg_price_similarity", True),
@@ -185,30 +189,31 @@ numerical_features_info = [
     ("fake_click_sequence_mean_norm", False),
     ("fake_click_sequence_gzip_len", False),
     ("fake_click_sequence_entropy", False),
-    ("clickout_counter_vs_interaction_counter_mean", False),
-    ("mean_rank_counter_mean", False),
-    ("identifier_counter_min_after", False),
-    ("interaction_counter_pure", False),
-    ("identifier_counter_max_after", False),
-    ("identifier_counter_mean_before_vs_item", False),
-    ("identifier_counter_prev_2_vs_item", False),
-    ("interaction_counter_max_vs_item", False),
-    ("interaction_counter_mean", False),
-    ("mean_rank_counter_mean_after_vs_item", False),
-    ("mean_rank_counter_rank_norm_after", False),
-    ("mean_rank_counter_max_vs_item", False),
-    ("mean_rank_counter_min", False),
-    ("impression_counter_prev_1_vs_item", False),
-    ("impression_counter_mean_before_vs_item", False),
-    ("clickout_counter_vs_impression_counter_max_after", False),
-    ("clickout_counter_vs_impression_counter_max_before", False),
-    ("identifier_counter_rank_norm_after", False),
-    ("impression_counter_rank_norm", False),
-    ("impression_counter_mean_prev_3_vs_item", False),
-    ("clickout_counter_vs_interaction_counter_pure", False),
-    ("impression_counter_min_before_vs_item", False),
-    ("top_7_impression_counter_mean_first_3_vs_item", False),
-    ("interaction_counter_vs_impression_counter_max_before", False),
+    # cpp features
+#     ("clickout_counter_vs_interaction_counter_mean", False),
+#     ("mean_rank_counter_mean", False),
+#     ("identifier_counter_min_after", False),
+#     ("interaction_counter_pure", False),
+#     ("identifier_counter_max_after", False),
+#     ("identifier_counter_mean_before_vs_item", False),
+#     ("identifier_counter_prev_2_vs_item", False),
+#     ("interaction_counter_max_vs_item", False),
+#     ("interaction_counter_mean", False),
+#     ("mean_rank_counter_mean_after_vs_item", False),
+#     ("mean_rank_counter_rank_norm_after", False),
+#     ("mean_rank_counter_max_vs_item", False),
+#     ("mean_rank_counter_min", False),
+#     ("impression_counter_prev_1_vs_item", False),
+#     ("impression_counter_mean_before_vs_item", False),
+#     ("clickout_counter_vs_impression_counter_max_after", False),
+#     ("clickout_counter_vs_impression_counter_max_before", False),
+#     ("identifier_counter_rank_norm_after", False),
+#     ("impression_counter_rank_norm", False),
+#     ("impression_counter_mean_prev_3_vs_item", False),
+#     ("clickout_counter_vs_interaction_counter_pure", False),
+#     ("impression_counter_min_before_vs_item", False),
+#     ("top_7_impression_counter_mean_first_3_vs_item", False),
+#     ("interaction_counter_vs_impression_counter_max_before", False),
     ("price_rem", False),
     ("are_price_sorted", False),
     ("are_price_sorted_rev", False),
@@ -438,7 +443,15 @@ class VectorizeChunks:
                 "was_clicked",
             ]
         ].to_hdf(metadata_save_as, key="data", mode="w")
-
+        
+        try:
+            print(fn)
+        except:
+            
+            print("CSR!!!")
+            # print(mat)
+            # print(mat.shape)
+        mat = csr_matrix(mat)
         save_npz(sparse_matrix_save_as, mat)
 
         gc.collect()

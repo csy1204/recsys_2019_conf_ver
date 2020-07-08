@@ -6,6 +6,10 @@ import arrow
 import joblib
 import numpy as np
 import pandas as pd
+
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
+
 from recsys.constants import COUNTRY_CODES
 from recsys.timestamp import convert_dt_to_timezone
 from recsys.utils import reduce_mem_usage
@@ -208,13 +212,22 @@ class MinimizeNNZ(BaseEstimator, TransformerMixin):
         self.offsets = []
         for col in X.columns:
             v = X[col]
-            dom = v.value_counts().index[0]
-            vmin = v.min()
-            vmax = v.max()
-            if dom == vmax or dom == vmin:
-                self.offsets.append(-dom)
-            else:
+            try:
+                dom = v.value_counts().index[0]
+                vmin = v.min()
+                vmax = v.max()
+                if dom == vmax or dom == vmin:
+                    self.offsets.append(-dom)
+                else:
+                    self.offsets.append(0)
+            except:
+                print(X.columns)
+                print(X.shape)
+                print(col)
+                print(v)
+                print(v.value_counts())
                 self.offsets.append(0)
+
         return self
 
     def transform(self, X):
