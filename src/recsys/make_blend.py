@@ -5,6 +5,10 @@ from multiprocessing.pool import Pool
 
 import numpy as np
 import pandas as pd
+
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
+
 from recsys.metric import mrr_fast
 from recsys.mrr import mrr_fast_v3
 from recsys.submission import group_clickouts

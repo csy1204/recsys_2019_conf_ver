@@ -2,6 +2,27 @@
 #include <vector>
 #include <string>
 
+
+// const std::vector<std::string> kFeatures{
+//     "max_after",
+//     "max_before",
+//     "max_vs_item",
+//     "mean",
+//     "mean_after_vs_item",
+//     "mean_before_vs_item",
+//     "mean_first_3_vs_item",
+//     "mean_prev_3_vs_item",
+//     "min",
+//     "min_after",
+//     "min_before_vs_item",
+//     "prev_1_vs_item",
+//     "prev_2_vs_item",
+//     "pure",
+//     "rank_norm",
+//     "rank_norm_after",
+// };
+
+
 const std::vector<std::string> kFeatures{
     "pure",
     "mean",

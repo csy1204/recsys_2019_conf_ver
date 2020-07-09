@@ -1,4 +1,3 @@
-
 #include <fstream>
 #include <iostream>
 #include <numeric>
@@ -14,62 +13,74 @@ const std::string kOutputPath = "../data/scores.csv";
 
 const int kLineLimit = 20000000;
 
+
+// {'clickout_counter_vs_impression_counter',
+//  'clickout_counter_vs_interaction_counter',
+//  'identifier_counter',
+//  'impression_counter',
+//  'interaction_counter',
+//  'interaction_counter_vs_impression_counter',
+//  'mean_rank_counter',
+//  'top_7_impression_counter'}
+
+
 std::vector<Counter*> counters = {
-    new ClickoutCounter(),
-    new ImpressionCounter(),
-    new InteractionCounter(),
-    new MeanRankCounter(),
-    new TopImpressionCounter(7),
+    new ClickoutCounter(), // O
+    new ImpressionCounter(), // O
+    new InteractionCounter(), // O
+    new MeanRankCounter(), // O
+    new TopImpressionCounter(7), // O
     new ComparisonCounter(
             new InteractionCounter(),
-            new ImpressionCounter()),
+            new ImpressionCounter()), // O
     new ComparisonCounter(
             new ClickoutCounter(),
-            new ImpressionCounter()),
+            new ImpressionCounter()), // O
     new ComparisonCounter(
             new ClickoutCounter(),
-            new InteractionCounter()),
-    new IdentifierCounter(),
-    // verified impressions
-    new VerifiedImpressionCounter(),
-    new ComparisonCounter(
-            new ClickoutCounter(),
-            new VerifiedImpressionCounter()),
-    new ComparisonCounter(
-            new InteractionCounter(),
-            new VerifiedImpressionCounter()),
-    new ComparisonCounter(
-            new VerifiedImpressionCounter(),
-            new ImpressionCounter()),
+            new InteractionCounter()), // O
+    new IdentifierCounter(), // O
 
-    // specific interactions
-    new SpecificInteractionCounter("interaction item info"),
-    new SpecificInteractionCounter("interaction item rating"),
-    new SpecificInteractionCounter("interaction item deals"),
-    new ComparisonCounter(
-            new SpecificInteractionCounter("interaction item info"),
-            new VerifiedImpressionCounter()),
-    new ComparisonCounter(
-            new SpecificInteractionCounter("interaction item rating"),
-            new VerifiedImpressionCounter()),
-    new ComparisonCounter(
-            new SpecificInteractionCounter("interaction item deals"),
-            new VerifiedImpressionCounter()),
-    // conditional mean rank counter
-    new ConditionalMeanRankCounter(),
+//     // verified impressions
+//     new VerifiedImpressionCounter(),
+//     new ComparisonCounter(
+//             new ClickoutCounter(),
+//             new VerifiedImpressionCounter()),
+//     new ComparisonCounter(
+//             new InteractionCounter(),
+//             new VerifiedImpressionCounter()),
+//     new ComparisonCounter(
+//             new VerifiedImpressionCounter(),
+//             new ImpressionCounter()),
 
-    // top x impressions
-    new TopImpressionCounter(3),
-    new TopImpressionCounter(5),
-    new ComparisonCounter(
-            new TopImpressionCounter(3),
-            new ImpressionCounter()),
-    new ComparisonCounter(
-            new TopImpressionCounter(5),
-            new ImpressionCounter()),
-    new ComparisonCounter(
-            new TopImpressionCounter(7),
-            new ImpressionCounter()),
+//     // specific interactions
+//     new SpecificInteractionCounter("interaction item info"),
+//     new SpecificInteractionCounter("interaction item rating"),
+//     new SpecificInteractionCounter("interaction item deals"),
+//     new ComparisonCounter(
+//             new SpecificInteractionCounter("interaction item info"),
+//             new VerifiedImpressionCounter()),
+//     new ComparisonCounter(
+//             new SpecificInteractionCounter("interaction item rating"),
+//             new VerifiedImpressionCounter()),
+//     new ComparisonCounter(
+//             new SpecificInteractionCounter("interaction item deals"),
+//             new VerifiedImpressionCounter()),
+//     // conditional mean rank counter
+//     new ConditionalMeanRankCounter(),
+
+//     // top x impressions
+//     new TopImpressionCounter(3),
+//     new TopImpressionCounter(5),
+//     new ComparisonCounter(
+//             new TopImpressionCounter(3),
+//             new ImpressionCounter()),
+//     new ComparisonCounter(
+//             new TopImpressionCounter(5),
+//             new ImpressionCounter()),
+//     new ComparisonCounter(
+//             new TopImpressionCounter(7),
+//             new ImpressionCounter()),
 };
 
 int main() {
