@@ -5,6 +5,10 @@ import joblib
 import numpy as np
 import pandas as pd
 from lightgbm import LGBMRanker
+
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
+
 from recsys.config import BEST_PARAMS
 from recsys.log_utils import get_logger
 from recsys.metric import mrr_fast

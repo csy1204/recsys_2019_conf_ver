@@ -1,5 +1,9 @@
 import numpy as np
 import datatable as dt
+
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
+
 from recsys.log_utils import get_logger
 from tqdm import tqdm
 
@@ -7,7 +11,7 @@ logger = get_logger()
 
 logger.info("Starting splitting")
 
-df = dt.fread("../../data/events_sorted_trans_all.csv")
+df = dt.fread("../../data/events_sorted_trans_all2.csv")
 filenames = []
 for i in tqdm(range(df.shape[0])):
     if (df[i, "is_val"] == False) and (df[i, "is_test"] == False):

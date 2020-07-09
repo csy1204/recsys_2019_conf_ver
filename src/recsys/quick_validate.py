@@ -2,6 +2,10 @@ import warnings
 
 import pandas as pd
 from lightgbm import LGBMRanker
+
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
+
 from recsys.df_utils import split_by_timestamp
 from recsys.metric import mrr_fast, mrr_fast_v2
 from recsys.utils import group_lengths
