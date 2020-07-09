@@ -1884,7 +1884,7 @@ def get_accumulators(hashn=None):
     ]
 
     if hashn is not None:
-        accumulators = [acc for i, acc in enumerate(accumulators) if i % 32 == hashn]
+        accumulators = [acc for i, acc in enumerate(accumulators) if i % 8 == hashn]
         print("N acc", hashn, len(accumulators))
 
     return accumulators

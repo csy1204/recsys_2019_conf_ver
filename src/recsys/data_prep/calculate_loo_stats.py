@@ -2,6 +2,8 @@ from collections import defaultdict
 from csv import DictWriter
 
 import pandas as pd
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
 from recsys.data_generator.accumulators import ACTIONS_WITH_ITEM_REFERENCE
 from tqdm import tqdm
 import numpy as np

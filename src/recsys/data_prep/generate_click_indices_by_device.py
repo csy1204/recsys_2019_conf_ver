@@ -4,6 +4,8 @@ from itertools import groupby
 
 import joblib
 import pandas as pd
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
 from recsys.utils import group_time
 from tqdm import tqdm
 

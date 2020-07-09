@@ -1,4 +1,6 @@
 import pandas as pd
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
 from recsys.transformers import RankFeatures, LagNumericalFeaturesWithinGroup
 from recsys.vectorizers import identity
 from sklearn.pipeline import make_union

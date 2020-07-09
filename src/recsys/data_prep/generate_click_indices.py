@@ -4,6 +4,8 @@ from itertools import groupby
 
 import joblib
 import pandas as pd
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
 from recsys.utils import group_time
 from tqdm import tqdm
 
@@ -57,7 +59,7 @@ diff_time_pivot = diff_time_pivot.div(diff_time_pivot.sum(axis=1), axis=0)
 records = []
 for ind in diff_time_pivot.index:
     for col in diff_time_pivot.columns:
-        records.append((ind, col, diff_time_pivot.ix[ind, col]))
+        records.append((ind, col, diff_time_pivot.loc[ind, col]))
 
 diff_time = pd.DataFrame.from_records(records)
 diff_time.columns = ["time", "offset", "prob"]

@@ -1,8 +1,9 @@
 from csv import DictReader, DictWriter
 
 import click
+import sys
+sys.path.append('/Users/josang-yeon/2020/tobigs/tobigs_reco_conf/recsys2019/src')
 from recsys.data_generator.accumulators import get_accumulators, logger, group_accumulators
-
 
 class FeatureGenerator:
     def __init__(self, limit, accumulators, save_only_features=False, input=None, save_as=None):
