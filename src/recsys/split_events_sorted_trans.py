@@ -11,7 +11,7 @@ logger = get_logger()
 
 logger.info("Starting splitting")
 
-df = dt.fread("../../data/events_sorted_trans_all2.csv")
+df = dt.fread("../../data/events_sorted_trans_all.csv")
 filenames = []
 for i in tqdm(range(df.shape[0])):
     if (df[i, "is_val"] == False) and (df[i, "is_test"] == False):

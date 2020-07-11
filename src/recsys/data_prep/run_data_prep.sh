@@ -1,5 +1,5 @@
 echo "0"
-python join_datasets.py
+# python join_datasets.py
 echo "1"
 python convert_item_metadata_to_sets.py
 echo "2"

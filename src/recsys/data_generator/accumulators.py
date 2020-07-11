@@ -247,7 +247,7 @@ class ClickProbabilityClickOffsetTimeOffset:
         action_types=None,
         impressions_type="impressions_raw",
         index_col="index_clicked",
-        probs_path="../../../data/click_probs_by_index.joblib",
+        probs_path="../../data/click_probs_by_index.joblib",
     ):
         self.name = name
         self.action_types = action_types
@@ -459,11 +459,11 @@ class SimilarityFeatures:
         self.type = type
 
         if self.type == "imm":
-            self.jacc_sim = JaccardItemSim(path="../../../data/item_metadata_map.joblib")
+            self.jacc_sim = JaccardItemSim(path="../../data/item_metadata_map.joblib")
         elif self.type == "poi":
-            self.poi_sim = JaccardItemSim(path="../../../data/item_pois.joblib")
+            self.poi_sim = JaccardItemSim(path="../../data/item_pois.joblib")
         elif self.type == "price":
-            self.price_sim = ItemPriceSim(path="../../../data/item_prices.joblib")
+            self.price_sim = ItemPriceSim(path="../../data/item_prices.joblib")
         self.last_item_clickout = defaultdict(int)
         self.user_item_interactions_list = defaultdict(set)
         self.user_item_session_interactions_list = defaultdict(set)
