@@ -221,11 +221,11 @@ class MinimizeNNZ(BaseEstimator, TransformerMixin):
                 else:
                     self.offsets.append(0)
             except:
-                print(X.columns)
-                print(X.shape)
-                print(col)
-                print(v)
-                print(v.value_counts())
+#                 print(X.columns)
+#                 print(X.shape)
+#                 print(col)
+#                 print(v)
+#                 print(v.value_counts())
                 self.offsets.append(0)
 
         return self

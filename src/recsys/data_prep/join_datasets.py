@@ -35,7 +35,10 @@ events_val["user_clickout_step_rev"] = (
 )
 val_last_clickouts = events_val[events_val["user_clickout_step_rev"] == 1][["user_id", "session_id", "step"]]
 val_last_clickouts["is_val"] = 1
+
 events = pd.merge(events, val_last_clickouts, on=["user_id", "session_id", "step"], how="left")
+
+
 events["is_val"].fillna(0, inplace=True)
 events["is_val"] = events["is_val"].astype(np.int)
 events.to_csv("../../../data/events_sorted.csv", index=False)

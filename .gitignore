@@ -119,5 +119,8 @@ src/recsys/*.ipynb
 *.feather
 *.npz
 *.h5
+*.ipynb
+*.xlsx
+*/*.xlsx
 
 notebooks_temp
